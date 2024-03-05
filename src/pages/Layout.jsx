@@ -18,7 +18,7 @@ function Layout () {
                 </div>
             </nav>
 
-            <div className="container-fluid p-5">
+            <div className="container-fluid p-4">
                 <Outlet />
             </div>
 
