@@ -18,6 +18,8 @@ function App () {
                     <Route index element={<Home/>}/>
                     <Route path="employeelist" element={<EmployeeList/>}/>
                     <Route path="employeecard" element={<EmployeeCard/>}/>
+                    <Route path="addemployee" element={<AddEmployee/>}/>
+                    <Route path="editemployee" element={<EditEmployee/>}/>
                     <Route path="*" element={<NotFound/>}/>
 
                 </Route>

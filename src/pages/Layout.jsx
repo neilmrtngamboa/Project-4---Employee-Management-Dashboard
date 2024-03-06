@@ -13,6 +13,8 @@ function Layout () {
                         <div className="navbar-nav">
                             <Link className="nav-link" to='employeelist'>Employee List</Link>
                             <Link className="nav-link" to='employeecard'>Employee Card</Link>
+                            <Link className="nav-link" to='addemployee'>Manage Records</Link>
+                            <Link className="nav-link" to='editemployee'>Update Records</Link>
                         </div>
                     </div>
                 </div>
