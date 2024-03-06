@@ -1,9 +1,28 @@
-import { useState } from 'react';
-import AddEmployee from './AddEmployee.jsx';
+import { useEffect, useState } from 'react';
+import { getFirestore, collection, onSnapshot} from "firebase/firestore";
+import firebaseInitialization from "./FirebaseConfig";
 
 function EmployeeList() {
   // Initialize Cloud Firestore and get a reference to the service
   // const db = getFirestore(firebaseInitalization);
+
+  useEffect(() => {
+    
+      // Initialize Cloud Firestore and get a reference to the service
+      const db = getFirestore(firebaseInitialization);
+
+      try {
+          onSnapshot(collection(db,'employee-dashboard')), snapshot => {
+            snapshot.forEach(employee => {
+              console.log(employee.data)
+            })
+          }   
+      } catch (error) {
+        alert('cant fetch data');
+      }
+
+
+  }, [])
   
   return (
     <>

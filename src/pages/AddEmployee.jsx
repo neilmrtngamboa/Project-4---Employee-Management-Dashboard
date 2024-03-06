@@ -11,6 +11,8 @@ function AddEmployee () {
     
       });
 
+    
+
   return (
     <section>
       <h1 className='text-center'>Employee list</h1>  
