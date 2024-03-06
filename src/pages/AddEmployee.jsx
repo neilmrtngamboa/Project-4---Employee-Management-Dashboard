@@ -2,6 +2,7 @@ import { useState } from "react";
 import EmployeeList from "./EmployeeList.jsx";
 import { getFirestore, collection, addDoc} from "firebase/firestore";
 import firebaseInitialization from "./FirebaseConfig";
+import { Alert } from "bootstrap";
 
 function AddEmployee () {
     
@@ -20,17 +21,20 @@ function AddEmployee () {
       // Initialize Cloud Firestore and get a reference to the service
       const db = getFirestore(firebaseInitialization);
 
-      addDoc(collection(db,'employee-dashboard'),employee); //Adding a document to the firebase collection
+      if (employee.firstname === '' || employee.lastname === '' || employee.position === '' || employee.salary === '' ){ //Condition if the form is empty
+        alert('Please fill out the empty fields!');
+      }else{
+        addDoc(collection(db,'employee-dashboard'),employee); //Adding a document to the firebase collection
 
-      setEmployeeList(employeeList => [...employeeList, employee]) //pushing the employee value to the employeeList array
-      console.log(employeeList);
-
-      setEmployee({             //Clearing the values of the form and the OnChange value
-        firstname: '',
-        lastname: '',        
-        position: '',
-        salary: 0
-      })
+        setEmployeeList(employeeList => [...employeeList, employee]) //pushing the employee value to the employeeList array
+        
+        setEmployee({             //Clearing the values of the form and the OnChange value
+          firstname: '',
+          lastname: '',        
+          position: '',
+          salary: 0
+        })
+      }
       
     }
 
