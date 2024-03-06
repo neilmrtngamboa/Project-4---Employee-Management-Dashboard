@@ -42,12 +42,12 @@ function AddEmployee () {
         <div className="row">
           <div className="col-md-4">
             <input className='form-control' type="text" placeholder='First Name' 
-              onChange={(e) => setEmployee({ 
-                ...employee,
+              onChange={(e) => setEmployee({ //adding OnChange to show typed data in the page
+                ...employee,                //retaining the values of the employee object
                 firstname: e.target.value
 
               })} 
-              value={employee.firstname} 
+              value={employee.firstname} //changing the value of the form based on the employee state
             />
           </div>
 
@@ -85,7 +85,7 @@ function AddEmployee () {
           </div>
 
           <div className="d-grid gap-2 mt-3">
-            <button className='btn btn-dark' onClick={AddEmployee}>Add new Employee Record</button>
+            <button className='btn btn-dark' onClick={AddEmployee}>Add new Employee Record</button> 
           </div>
 
         </div>
