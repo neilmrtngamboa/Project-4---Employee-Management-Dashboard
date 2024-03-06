@@ -20,14 +20,14 @@ function AddEmployee () {
       // Initialize Cloud Firestore and get a reference to the service
       const db = getFirestore(firebaseInitialization);
 
-      addDoc(collection(db,'employee-dashboard'),employee);
+      addDoc(collection(db,'employee-dashboard'),employee); //Adding a document to the firebase collection
 
-      setEmployeeList(employeeList => [...employeeList, employee])
+      setEmployeeList(employeeList => [...employeeList, employee]) //pushing the employee value to the employeeList array
       console.log(employeeList);
 
-      setEmployee({
+      setEmployee({             //Clearing the values of the form and the OnChange value
         firstname: '',
-        lastname: '',
+        lastname: '',        
         position: '',
         salary: 0
       })
