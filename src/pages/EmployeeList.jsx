@@ -1,6 +1,5 @@
 import { useState } from 'react';
-
-
+import AddEmployee from './AddEmployee.jsx';
 
 function EmployeeList() {
   // Initialize Cloud Firestore and get a reference to the service

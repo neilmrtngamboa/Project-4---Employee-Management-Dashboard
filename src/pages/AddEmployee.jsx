@@ -1,4 +1,5 @@
 import { useState } from "react";
+import EmployeeList from "./EmployeeList.jsx";
 
 function AddEmployee () {
     
@@ -103,7 +104,9 @@ function AddEmployee () {
               
           </div>
       </div>    
-
+    
+        
+      <EmployeeList></EmployeeList>
       
     </section>
   )
