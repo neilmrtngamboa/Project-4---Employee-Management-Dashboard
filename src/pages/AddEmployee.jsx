@@ -85,14 +85,14 @@ function AddEmployee () {
           </div>
 
           <div className="d-grid gap-2 mt-3">
-            <button className='btn btn-dark' onClick={AddEmployee}>Add new Employee Record</button> 
+            <button className='btn btn-dark' onClick={AddEmployee}>Add new Employee Record</button>
           </div>
 
         </div>
         
       </div>
 
-      <div className="card bg-dark-subtle mt-3">
+      <div className="card bg-dark-subtle mt-3"> 
           <div className="card-body p-2">
             <div className="row">
               <div className="col-md-4">
