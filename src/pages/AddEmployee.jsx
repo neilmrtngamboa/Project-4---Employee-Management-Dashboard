@@ -1,5 +1,7 @@
 import { useState } from "react";
 import EmployeeList from "./EmployeeList.jsx";
+import { getFirestore, collection, addDoc} from "firebase/firestore";
+import firebaseInitialization from "./FirebaseConfig";
 
 function AddEmployee () {
     
@@ -10,8 +12,27 @@ function AddEmployee () {
         salary: 0
     
       });
-
     
+    const [employeeList,setEmployeeList] = useState ([]);
+
+    const AddEmployee = () => {
+      
+      // Initialize Cloud Firestore and get a reference to the service
+      const db = getFirestore(firebaseInitialization);
+
+      addDoc(collection(db,'employee-dashboard'),employee);
+
+      setEmployeeList(employeeList => [...employeeList, employee])
+      console.log(employeeList);
+
+      setEmployee({
+        firstname: '',
+        lastname: '',
+        position: '',
+        salary: 0
+      })
+      
+    }
 
   return (
     <section>
@@ -64,7 +85,7 @@ function AddEmployee () {
           </div>
 
           <div className="d-grid gap-2 mt-3">
-            <button className='btn btn-dark'>Add new Employee Record</button>
+            <button className='btn btn-dark' onClick={AddEmployee}>Add new Employee Record</button>
           </div>
 
         </div>
