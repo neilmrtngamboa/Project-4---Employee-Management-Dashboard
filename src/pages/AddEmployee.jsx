@@ -134,9 +134,6 @@ function AddEmployee () {
               
           </div>
       </div>    
-    
-        
-      <EmployeeList></EmployeeList>
       
     </section>
   )
