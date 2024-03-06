@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import { getFirestore, collection, onSnapshot, addDoc, deleteDoc, doc, updateDoc } from "firebase/firestore";
-import firebaseInitialization from './FirebaseConfig.jsx';
+import { useState } from 'react';
 
 
 
@@ -76,8 +74,37 @@ function EmployeeList() {
 
       <div className="card bg-dark-subtle mt-3">
           <div className="card-body p-2">
-              <h5 className='text-center'>First Name: {employee.firstname} Last Name: {employee.lastname}  Position: {employee.position}  Salary: ${employee.salary}</h5>
-                            
+            <div className="row">
+              <div className="col-md-4">
+                <div className='text-center'>
+                  <h5> First Name:</h5>
+                  <h5 className='fw-light'>{employee.firstname}</h5>
+                </div>
+              </div>
+
+              <div className="col-md-4">
+                <div className='text-center'>
+                  <h5> Last Name:</h5>
+                  <h5 className='fw-light'>{employee.lastname}</h5>
+                </div>
+              </div>
+
+              <div className="col-md-2">
+                <div className='text-center'>
+                  <h5> Position:</h5>
+                  <h5 className='fw-light'>{employee.position}</h5>
+                </div>
+              </div>
+
+              <div className="col-md-2">
+                <div className='text-center'>
+                  <h5> Salary:</h5>
+                  <h5 className='fw-light'>${employee.salary}</h5>
+                </div>
+              </div>
+
+            </div>
+              
           </div>
       </div>    
 
