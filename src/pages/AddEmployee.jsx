@@ -2,7 +2,9 @@ import { useState } from "react";
 import EmployeeList from "./EmployeeList.jsx";
 import { getFirestore, collection, addDoc} from "firebase/firestore";
 import firebaseInitialization from "./FirebaseConfig";
-import { Alert } from "bootstrap";
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import SuccessfullyAdded from "./SuccessfullyAdded.jsx";
 
 function AddEmployee () {
     
@@ -25,9 +27,10 @@ function AddEmployee () {
         alert('Please fill out the empty fields!');
       }else{
         addDoc(collection(db,'employee-dashboard'),employee); //Adding a document to the firebase collection
-
+        
         setEmployeeList(employeeList => [...employeeList, employee]) //pushing the employee value to the employeeList array
         
+        alert(`${employee.firstname} ${employee.lastname} has been successfully added!`) //Alert when the data has been successfully added
         setEmployee({             //Clearing the values of the form and the OnChange value
           firstname: '',
           lastname: '',        
