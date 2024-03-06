@@ -8,7 +8,10 @@ function EmployeeList() {
   
   return (
     <>
-      <h1>this is the employee list page</h1>
+    <h1 className='fw-light text-center'>Employee List</h1>
+    <div class="alert alert-info mt-3" role="alert">
+        FirstName LastName Position Salary
+    </div>
     </>
   )
  

@@ -6,7 +6,7 @@ function AddEmployee () {
         firstname: '',
         lastname: '',
         position: '',
-        salary: ''
+        salary: 0
     
       });
 
