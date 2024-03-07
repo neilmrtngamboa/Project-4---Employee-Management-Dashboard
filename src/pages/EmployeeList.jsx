@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getFirestore, collection, onSnapshot} from "firebase/firestore";
 import firebaseInitialization from "./FirebaseConfig";
 
+
 function EmployeeList({firstname,lastname,salary,position}) {
 
 
@@ -52,7 +53,6 @@ function EmployeeList({firstname,lastname,salary,position}) {
       )
 
     }
-    
     </>
   )
  
