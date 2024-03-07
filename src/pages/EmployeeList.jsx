@@ -37,22 +37,23 @@ function EmployeeList({firstname,lastname,salary,position}) {
   
   return (
     <>
-    <h1 className='text-center'>Employee List</h1>
-    {
-      employeeRecord.map(showData => 
-      <>
-      <div className="row">
-      <div className="col-md-8 mx-auto">
-        <div className="alert alert-info mt-1 fw-light" role="alert">
-          First Name: <b>{showData.firstname}</b> Last Name: <b>{showData.lastname}</b> Position: <b>{showData.position}</b> Salary: <b>${showData.salary}</b>
+      
+      <h1 className='text-center'>Employee List</h1>
+      {
+        employeeRecord.map(showData => 
+        <>
+        <div className="row">
+        <div className="col-md-8 mx-auto">
+          <div className="alert alert-info mt-1 fw-light" role="alert">
+            First Name: <b>{showData.firstname}</b> Last Name: <b>{showData.lastname}</b> Position: <b>{showData.position}</b> Salary: <b>${showData.salary}</b>
+          </div>
         </div>
       </div>
-    </div>
-      </>
-      
-      )
+        </>
+        
+        )
 
-    }
+      }
     </>
   )
  
