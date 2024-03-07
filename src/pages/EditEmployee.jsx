@@ -76,10 +76,15 @@ function EditEmployee () {
         <div className="flex-md-row">
             <div className="card mt-2 ms-4 align-items-center">
             <img src="https://cdn-icons-png.flaticon.com/256/1177/1177568.png" className="card-img-top img-fluid mt-2" alt="..." style={{height:'8rem', width:'8rem'}}/>
-                <div className="card-body text-center" style={{width:'10rem', height:'10rem'}}>
+                <div className="card-body text-center">
                     <h5 className="card-title">{showData.firstname} {showData.lastname}</h5>
                     <p className="card-text">{showData.position}</p>
                     <p className="card-text">${showData.salary}</p>
+                    <div className="">
+                        <button className="btn btn-dark btn-sm float-end">Update</button>
+                        <button className="btn btn-danger btn-sm float-end me-3">Delete</button>
+                    </div>
+                    
                 </div>
             
             </div>
