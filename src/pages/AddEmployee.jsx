@@ -1,10 +1,10 @@
 import { useState } from "react";
-import EmployeeList from "./EmployeeList.jsx";
 import { getFirestore, collection, addDoc} from "firebase/firestore";
 import firebaseInitialization from "./FirebaseConfig";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-import SuccessfullyAdded from "./SuccessfullyAdded.jsx";
+import EmployeeList from "./EmployeeList";
+
 
 function AddEmployee () {
     
@@ -133,7 +133,19 @@ function AddEmployee () {
             </div>
               
           </div>
-      </div>    
+      </div>
+
+      {
+        employeeList.map((employeeValues) => 
+        <EmployeeList
+          key={employeeValues.id}
+          firstname = {employeeValues.firstname}
+          lastname = {employeeValues.lastname}
+          position = {employeeValues.position}
+          salary = {employeeValues.salary}
+        />
+        )
+      }    
       
     </section>
   )

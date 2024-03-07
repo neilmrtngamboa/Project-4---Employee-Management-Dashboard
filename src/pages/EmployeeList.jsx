@@ -2,21 +2,31 @@ import { useEffect, useState } from 'react';
 import { getFirestore, collection, onSnapshot} from "firebase/firestore";
 import firebaseInitialization from "./FirebaseConfig";
 
-function EmployeeList() {
-  // Initialize Cloud Firestore and get a reference to the service
-  // const db = getFirestore(firebaseInitalization);
+function EmployeeList({firstname,lastname,salary,position}) {
+
+
+  const [employeeRecord,setEmployeeRecord] = useState ([])
 
   useEffect(() => {
     
       // Initialize Cloud Firestore and get a reference to the service
       const db = getFirestore(firebaseInitialization);
+      const dbReference = collection(db,'employee-dashboard');
+
 
       try {
-          onSnapshot(collection(db,'employee-dashboard')), snapshot => {
-            snapshot.forEach(employee => {
-              console.log(employee.data)
+            onSnapshot(dbReference,getEmployeeData => {
+              const newEmployeeRecord = []
+              getEmployeeData.forEach(employeeData => {
+                
+                newEmployeeRecord.push(employeeData.data());
+                setEmployeeRecord(newEmployeeRecord);
+                
+              })
+              console.log(employeeRecord)  
+              
             })
-          }   
+          
       } catch (error) {
         alert('cant fetch data');
       }
@@ -26,17 +36,17 @@ function EmployeeList() {
   
   return (
     <>
-    <h1 className='fw-light text-center'>Employee List</h1>
     <div className="row">
       <div className="col-md-8 mx-auto">
-        <div class="alert alert-info mt-3" role="alert">
-          FirstName LastName Position Salary
-        </div>
-        <div class="alert alert-info mt-3" role="alert">
-          FirstName LastName Position Salary
+        <div className="alert alert-info mt-3 fw-light" role="alert">
+          First Name: <b>{firstname}</b> Last Name: <b>{lastname}</b> Position: <b>{position}</b> Salary: <b>${salary}</b>
         </div>
       </div>
     </div>
+    {
+      
+    }
+
     
     </>
   )
