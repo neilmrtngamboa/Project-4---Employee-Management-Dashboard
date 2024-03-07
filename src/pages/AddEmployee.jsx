@@ -134,18 +134,21 @@ function AddEmployee () {
               
           </div>
       </div>
+      {employeeList.map(show => 
+      <>
+      <div className="row">
+      <div className="col-md-8 mx-auto">
+        <div className="alert alert-info mt-3 fw-light" role="alert">
+          First Name: <b>{show.firstname}</b> Last Name: <b>{show.lastname}</b> Position: <b>{show.position}</b> Salary: <b>${show.salary}</b>
+        </div>
+      </div>
+      </div>
+     
+      </>
+      
+      )
 
-      {
-        employeeList.map((employeeValues) => 
-        <EmployeeList
-          key={employeeValues.id}
-          firstname = {employeeValues.firstname}
-          lastname = {employeeValues.lastname}
-          position = {employeeValues.position}
-          salary = {employeeValues.salary}
-        />
-        )
-      }    
+      }
       
     </section>
   )
