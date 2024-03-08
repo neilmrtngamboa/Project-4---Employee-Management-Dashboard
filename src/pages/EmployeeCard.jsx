@@ -11,6 +11,8 @@ function EmployeeCard () {
 
     const [updatebuttonStatus, setUpdateButtonStatus] = useState(true)
 
+    const [FormStatus,setFormStatus] = useState(true)
+
     useEffect(() => {
     
       // Initialize Cloud Firestore and get a reference to the service
@@ -47,6 +49,7 @@ function EmployeeCard () {
         salary: salary
       })
       setUpdateButtonStatus(false)
+      setFormStatus(false)
     }
 
     const updateEmployeeRecord = () => {
@@ -78,7 +81,7 @@ function EmployeeCard () {
             ...employeeEdit,
             firstname:e.target.value
           })}
-          value={employeeEdit.firstname} placeholder="First Name"/>
+          value={employeeEdit.firstname} disabled={FormStatus} placeholder="First Name"/>
         </div>
 
         <div className="col-md-4">
@@ -87,7 +90,7 @@ function EmployeeCard () {
             ...employeeEdit,
             lastname:e.target.value
           })}
-          value={employeeEdit.lastname} placeholder="Last Name"/>
+          value={employeeEdit.lastname} disabled={FormStatus} placeholder="Last Name"/>
         </div>
 
         <div className="col-md-2">
@@ -96,7 +99,7 @@ function EmployeeCard () {
             ...employeeEdit,
             position:e.target.value
           })}
-          value={employeeEdit.position} placeholder="Position" />
+          value={employeeEdit.position} disabled={FormStatus} placeholder="Position" />
         </div>
 
         <div className="col-md-2">
@@ -105,7 +108,7 @@ function EmployeeCard () {
             ...employeeEdit,
             position:e.target.value
           })}
-          value={employeeEdit.salary} placeholder="Salary"/>
+          value={employeeEdit.salary} disabled={FormStatus} placeholder="Salary"/>
         </div>
         
         <button className="btn btn-dark" disabled={updatebuttonStatus} onClick={updateEmployeeRecord}>Update Record</button>
