@@ -59,6 +59,13 @@ function EmployeeCard () {
         position: employeeEdit.position,
         salary: employeeEdit.salary,
       })
+
+      setEmployeeEdit({
+        firstname: '',
+        lastname: '',
+        position: '',
+        salary: 0
+      })
       setUpdateButtonStatus(true)
     }
 
