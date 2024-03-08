@@ -1,65 +1,93 @@
 import { useState, useEffect } from "react";
 import { getFirestore, collection, onSnapshot} from "firebase/firestore";
 import firebaseInitialization from "./FirebaseConfig";
+import EditEmployee from "./EditEmployee";
 
 function EmployeeCard () {
 
     const [employeeRecord,setEmployeeRecord] = useState ([])
 
+    const [employeeEdit, setEmployeeEdit] = useState({});
+
     useEffect(() => {
     
-        // Initialize Cloud Firestore and get a reference to the service
-        const db = getFirestore(firebaseInitialization);
-        const dbReference = collection(db,'employee-dashboard');
-  
-  
-        try {
-              onSnapshot(dbReference,getEmployeeData => {
-                const newEmployeeRecord = []
-                getEmployeeData.forEach(employeeData => {
-                  
-                  newEmployeeRecord.push(employeeData.data());
-                  setEmployeeRecord(newEmployeeRecord);
-                  
-                })
-                console.log(employeeRecord)  
+      // Initialize Cloud Firestore and get a reference to the service
+      const db = getFirestore(firebaseInitialization);
+      const dbReference = collection(db,'employee-dashboard');
+
+
+      try {
+            onSnapshot(dbReference,getEmployeeData => {
+              const newEmployeeRecord = []
+              getEmployeeData.forEach(employeeData => {
                 
-              })
-            
-        } catch (error) {
-          alert('cant fetch data');
-        }
-  
-  
+                let empID = employeeData.data();
+                empID['employeeID'] = employeeData.id
+                newEmployeeRecord.push(empID)                
+              }) 
+              setEmployeeRecord(newEmployeeRecord);
+            })
+          
+      } catch (error) {
+        alert('cant fetch data');
+      }
+
+
     }, [])
-    return (
-        <>
-        <h1>This is the employee card page</h1>
 
-        {
-      employeeRecord.map(showData => 
-      <>
-        <div className="d-md-inline-flex">
-            <div className="flex-md-row">
-                <div className="card mt-2 ms-4 align-items-center">
-                <img src="https://cdn-icons-png.flaticon.com/256/1177/1177568.png" class="card-img-top img-fluid mt-2" alt="..." style={{height:'8rem', width:'8rem'}}/>
-                    <div className="card-body text-center" style={{width:'10rem', height:'10rem'}}>
-                        <h5 className="card-title">{showData.firstname} {showData.lastname}</h5>
-                        <p className="card-text">{showData.position}</p>
-                        <p className="card-text">${showData.salary}</p>
-                    </div>
-                
-                </div>
-                
+    const setupUpdate = (employeeID,firstname,lastname,position,salary) => {
 
-            </div>
-        </div>
-    </>
-      
-      )
-
+      setEmployeeEdit({
+        employeeID: employeeID,
+        firstname: firstname,
+        lastname: lastname,
+        position: position,
+        salary: salary
+      })
+      console.log(employeeEdit);
     }
-        </>
+
+    return (
+      <>
+      <div className="row">
+        <div className="col-md-4">
+          <input type="text" className="form-control" name="" id=""
+          onChange={(e) => setEmployeeEdit({
+            ...employeeEdit,
+            firstname:e.target.value
+          })}
+          value={employeeEdit.firstname} placeholder="First Name"/>
+        </div>
+
+        <div className="col-md-4">
+          <input type="text" className="form-control" name="" id="" value={employeeEdit.lastname} placeholder="Last Name"/>
+        </div>
+
+        <div className="col-md-2">
+          <input type="text" className="form-control" name="" id="" value={employeeEdit.position} placeholder="Position" />
+        </div>
+
+        <div className="col-md-2">
+          <input type="number" className="form-control" name="" id="" value={employeeEdit.salary} placeholder="Salary"/>
+        </div>
+
+      </div>
+      
+          {
+            employeeRecord.map((Employee) =>
+            <EditEmployee
+              key={Employee.id}
+              firstname={Employee.firstname}
+              lastname={Employee.lastname}
+              position={Employee.position}
+              salary={Employee.salary}
+              setupUpdate={setupUpdate}
+              employeeID={Employee.employeeID}
+            />
+            )
+          }
+      </>
+     
     )
 }
 
