@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getFirestore, collection, onSnapshot,updateDoc} from "firebase/firestore";
+import { getFirestore, collection, onSnapshot, updateDoc,doc} from "firebase/firestore";
 import firebaseInitialization from "./FirebaseConfig";
 import EditEmployee from "./EditEmployee";
 
@@ -47,6 +47,12 @@ function EmployeeCard () {
       console.log(employeeEdit);
     }
 
+    const updateEmployeeRecord = () => {
+
+      alert('button is working');
+
+    }
+
     return (
       <>
       <div className="row">
@@ -85,7 +91,8 @@ function EmployeeCard () {
           })}
           value={employeeEdit.salary} placeholder="Salary"/>
         </div>
-
+        
+        <button className="btn btn-dark" onClick={updateEmployeeRecord}>Update Record</button>
       </div>
       
           {
