@@ -9,6 +9,8 @@ function EmployeeCard () {
 
     const [employeeEdit, setEmployeeEdit] = useState({});
 
+    const [updatebuttonStatus, setUpdateButtonStatus] = useState(true)
+
     useEffect(() => {
     
       // Initialize Cloud Firestore and get a reference to the service
@@ -44,7 +46,7 @@ function EmployeeCard () {
         position: position,
         salary: salary
       })
-      console.log(employeeEdit);
+      setUpdateButtonStatus(false)
     }
 
     const updateEmployeeRecord = () => {
@@ -57,7 +59,7 @@ function EmployeeCard () {
         position: employeeEdit.position,
         salary: employeeEdit.salary,
       })
-
+      setUpdateButtonStatus(true)
     }
 
     return (
@@ -99,7 +101,7 @@ function EmployeeCard () {
           value={employeeEdit.salary} placeholder="Salary"/>
         </div>
         
-        <button className="btn btn-dark" onClick={updateEmployeeRecord}>Update Record</button>
+        <button className="btn btn-dark" disabled={updatebuttonStatus} onClick={updateEmployeeRecord}>Update Record</button>
       </div>
       
           {
