@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getFirestore, collection, onSnapshot} from "firebase/firestore";
+import { getFirestore, collection, onSnapshot,updateDoc} from "firebase/firestore";
 import firebaseInitialization from "./FirebaseConfig";
 import EditEmployee from "./EditEmployee";
 
