@@ -7,11 +7,11 @@ function EmployeeCard () {
 
     const [employeeRecord,setEmployeeRecord] = useState ([])
 
-    const [employeeEdit, setEmployeeEdit] = useState({});
+    const [employeeEdit, setEmployeeEdit] = useState({}); //container of the fetched data (with the ID); 
 
-    const [updatebuttonStatus, setUpdateButtonStatus] = useState(true)
+    const [updatebuttonStatus, setUpdateButtonStatus] = useState(true) //state of the update button
 
-    const [FormStatus,setFormStatus] = useState(true)
+    const [FormStatus,setFormStatus] = useState(true) //state of the Update Form
 
     useEffect(() => {
     
@@ -22,14 +22,14 @@ function EmployeeCard () {
 
       try {
             onSnapshot(dbReference,getEmployeeData => {
-              const newEmployeeRecord = []
+              const newEmployeeRecord = []              //Container of the fetched data with ID
               getEmployeeData.forEach(employeeData => {
                 
-                let empID = employeeData.data();
-                empID['employeeID'] = employeeData.id
-                newEmployeeRecord.push(empID)                
+                let empID = employeeData.data();        //set the fetched data to empID
+                empID['employeeID'] = employeeData.id   //set the employeeData.id to empID['employeeID']
+                newEmployeeRecord.push(empID)           //push the fetched ID(empID) to the array (newEmployeeRecord)     
               }) 
-              setEmployeeRecord(newEmployeeRecord);
+              setEmployeeRecord(newEmployeeRecord);     //changed the state of the EmployeeRecord Array to the new array (newEmployeeRecord)
             })
           
       } catch (error) {
@@ -39,37 +39,37 @@ function EmployeeCard () {
 
     }, [])
 
-    const setupUpdate = (employeeID,firstname,lastname,position,salary) => {
+    const setupUpdate = (employeeID,firstname,lastname,position,salary) => { //fetch the selected data
 
-      setEmployeeEdit({
-        employeeID: employeeID,
+      setEmployeeEdit({             //Set the Object (EmployeeEdit) to the chosen record
+        employeeID: employeeID,         
         firstname: firstname,
         lastname: lastname,
         position: position,
         salary: salary
       })
-      setUpdateButtonStatus(false)
-      setFormStatus(false)
+      setUpdateButtonStatus(false)  //undisable the button if the function (setupUpdate) is called
+      setFormStatus(false)          //undisable the the form if the function (setupUpdate) is called
     }
 
     const updateEmployeeRecord = () => {
 
-      const db = getFirestore(firebaseInitialization);
+      const db = getFirestore(firebaseInitialization); // Get the data from the database
 
-      updateDoc(doc(db,'employee-dashboard',employeeEdit.employeeID), {
+      updateDoc(doc(db,'employee-dashboard',employeeEdit.employeeID), { //update the selected data and set the state based from the Object (EmployeeEdit)
         firstname: employeeEdit.firstname,
         lastname: employeeEdit.lastname,
         position: employeeEdit.position,
         salary: employeeEdit.salary,
       })
 
-      setEmployeeEdit({
+      setEmployeeEdit({     //Clear the values after updating the chosen data.
         firstname: '',
         lastname: '',
         position: '',
         salary: 0
       })
-      setUpdateButtonStatus(true)
+      setUpdateButtonStatus(true) //Disable the button after updating the chosen data.
     }
 
     return (
@@ -77,11 +77,11 @@ function EmployeeCard () {
       <div className="row">
         <div className="col-md-4">
           <input type="text" className="form-control" name="" id=""
-          onChange={(e) => setEmployeeEdit({
-            ...employeeEdit,
-            firstname:e.target.value
+          onChange={(e) => setEmployeeEdit({  //To make changes to the data
+            ...employeeEdit,                 //To retain each values of the Object (employeeEdit)
+            firstname:e.target.value         //set the state of the firstname based on the event that happened.
           })}
-          value={employeeEdit.firstname} disabled={FormStatus} placeholder="First Name"/>
+          value={employeeEdit.firstname} disabled={FormStatus} placeholder="First Name"/> 
         </div>
 
         <div className="col-md-4">
@@ -115,10 +115,10 @@ function EmployeeCard () {
       </div>
       
           {
-            employeeRecord.map((Employee) =>
+            employeeRecord.map((Employee) =>  //Pass the fetched data on the EditEmployee component.
             <EditEmployee
               key={Employee.id}
-              firstname={Employee.firstname}
+              firstname={Employee.firstname} 
               lastname={Employee.lastname}
               position={Employee.position}
               salary={Employee.salary}
