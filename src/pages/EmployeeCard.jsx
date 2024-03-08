@@ -60,15 +60,30 @@ function EmployeeCard () {
         </div>
 
         <div className="col-md-4">
-          <input type="text" className="form-control" name="" id="" value={employeeEdit.lastname} placeholder="Last Name"/>
+          <input type="text" className="form-control" name="" id=""
+          onChange={(e) => setEmployeeEdit({
+            ...employeeEdit,
+            lastname:e.target.value
+          })}
+          value={employeeEdit.lastname} placeholder="Last Name"/>
         </div>
 
         <div className="col-md-2">
-          <input type="text" className="form-control" name="" id="" value={employeeEdit.position} placeholder="Position" />
+          <input type="text" className="form-control" name="" id=""
+          onChange={(e) => setEmployeeEdit({
+            ...employeeEdit,
+            position:e.target.value
+          })}
+          value={employeeEdit.position} placeholder="Position" />
         </div>
 
         <div className="col-md-2">
-          <input type="number" className="form-control" name="" id="" value={employeeEdit.salary} placeholder="Salary"/>
+          <input type="number" className="form-control" name="" id=""
+          onChange={(e) => setEmployeeEdit({
+            ...employeeEdit,
+            position:e.target.value
+          })}
+          value={employeeEdit.salary} placeholder="Salary"/>
         </div>
 
       </div>
