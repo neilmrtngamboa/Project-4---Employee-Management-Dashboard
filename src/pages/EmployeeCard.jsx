@@ -49,7 +49,14 @@ function EmployeeCard () {
 
     const updateEmployeeRecord = () => {
 
-      alert('button is working');
+      const db = getFirestore(firebaseInitialization);
+
+      updateDoc(doc(db,'employee-dashboard',employeeEdit.employeeID), {
+        firstname: employeeEdit.firstname,
+        lastname: employeeEdit.lastname,
+        position: employeeEdit.position,
+        salary: employeeEdit.salary,
+      })
 
     }
 
