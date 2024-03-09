@@ -85,7 +85,7 @@ function EmployeeCard () {
     return (
       <>
       <div className="row">
-        <div className="col-md-4">
+        <div className="col-md-3">
           <input type="text" className="form-control" name="" id=""
           onChange={(e) => setEmployeeEdit({  //To make changes to the data
             ...employeeEdit,                 //To retain each values of the Object (employeeEdit)
@@ -94,7 +94,7 @@ function EmployeeCard () {
           value={employeeEdit.firstname} disabled={FormStatus} placeholder="First Name"/> 
         </div>
 
-        <div className="col-md-4">
+        <div className="col-md-3">
           <input type="text" className="form-control" name="" id=""
           onChange={(e) => setEmployeeEdit({
             ...employeeEdit,
@@ -121,7 +121,10 @@ function EmployeeCard () {
           value={employeeEdit.salary} disabled={FormStatus} placeholder="Salary"/>
         </div>
         
-        <button className="btn btn-dark" disabled={updatebuttonStatus} onClick={updateEmployeeRecord}>Update Record</button>
+        <div className="col-md-2">
+          <button className="btn btn-dark" disabled={updatebuttonStatus} onClick={updateEmployeeRecord}>Update Record</button>
+        </div>
+        
       </div>
       
           {
