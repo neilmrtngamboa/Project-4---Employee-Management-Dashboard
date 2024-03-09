@@ -14,7 +14,7 @@ return (
                     </div>
                     <button className="btn btn-secondary" onClick={()=> {setupUpdate (employeeID,firstname,lastname,position,
                         salary)}}>Edit</button>
-                    <button className="btn btn-danger" onClick={deleteRecord}>Delete Record</button>
+                    <button className="btn btn-danger" onClick={ ()=> deleteRecord (employeeID)}>Delete Record</button>
                 </div> 
                 
 

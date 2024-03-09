@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getFirestore, collection, onSnapshot, updateDoc,doc} from "firebase/firestore";
+import { getFirestore, collection, onSnapshot, updateDoc,doc,deleteDoc} from "firebase/firestore";
 import firebaseInitialization from "./FirebaseConfig";
 import EditEmployee from "./EditEmployee";
 
@@ -72,8 +72,14 @@ function EmployeeCard () {
       setUpdateButtonStatus(true) //Disable the button after updating the chosen data.
     }
 
-    const deleteRecord = () => {
-      alert('button is working!');
+    const deleteRecord = (employeeID) => {
+      //alert('button is working!');
+
+      const db = getFirestore(firebaseInitialization); // Get the data from the database
+      const deleteEmployee = doc(db,'employee-dashboard',employeeID)
+
+      deleteDoc(deleteEmployee);
+
     }
 
     return (
