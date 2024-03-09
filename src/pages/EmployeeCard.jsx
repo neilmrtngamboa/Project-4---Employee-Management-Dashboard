@@ -72,6 +72,10 @@ function EmployeeCard () {
       setUpdateButtonStatus(true) //Disable the button after updating the chosen data.
     }
 
+    const deleteRecord = () => {
+      alert('button is working!');
+    }
+
     return (
       <>
       <div className="row">
@@ -124,6 +128,7 @@ function EmployeeCard () {
               salary={Employee.salary}
               setupUpdate={setupUpdate}
               employeeID={Employee.employeeID}
+              deleteRecord={deleteRecord}
             />
             )
           }

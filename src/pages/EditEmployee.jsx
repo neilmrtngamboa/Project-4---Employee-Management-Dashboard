@@ -1,4 +1,4 @@
-function EditEmployee ({firstname,lastname,salary,position,employeeID,setupUpdate}) {
+function EditEmployee ({firstname,lastname,salary,position,employeeID,setupUpdate,deleteRecord}) {
 return (
     <>
     <>
@@ -14,6 +14,7 @@ return (
                     </div>
                     <button className="btn btn-secondary" onClick={()=> {setupUpdate (employeeID,firstname,lastname,position,
                         salary)}}>Edit</button>
+                    <button className="btn btn-danger" onClick={deleteRecord}>Delete Record</button>
                 </div> 
                 
 
