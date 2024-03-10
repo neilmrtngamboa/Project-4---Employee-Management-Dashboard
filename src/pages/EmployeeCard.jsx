@@ -3,6 +3,7 @@ import { getFirestore, collection, onSnapshot, updateDoc,doc,deleteDoc} from "fi
 import firebaseInitialization from "./FirebaseConfig";
 import EditEmployee from "./EditEmployee";
 import './Style/EditEmployee.css'
+import Swal from 'sweetalert2'
 
 
 function EmployeeCard () {
@@ -76,6 +77,13 @@ function EmployeeCard () {
 
     const deleteRecord = (employeeID) => {
 
+      Swal.fire({
+        title: 'Error!',
+        text: 'Do you want to continue',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
+      
       const db = getFirestore(firebaseInitialization); // Get the data from the database
       const deleteEmployee = doc(db,'employee-dashboard',employeeID)
 
