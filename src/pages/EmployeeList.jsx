@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getFirestore, collection, onSnapshot} from "firebase/firestore";
 import firebaseInitialization from "./FirebaseConfig";
+import './Style/EmployeeList.css'
 
 
 function EmployeeList({firstname,lastname,salary,position}) {
@@ -38,7 +39,7 @@ function EmployeeList({firstname,lastname,salary,position}) {
   return (
     <>
       
-      <h1 className='text-center'>Employee List</h1>
+      <h1 className='text-center' id='headfont'>Employee List</h1>
       {
         employeeRecord.map(showData => 
         <>

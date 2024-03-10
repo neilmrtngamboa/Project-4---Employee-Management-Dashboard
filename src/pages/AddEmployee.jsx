@@ -44,11 +44,10 @@ function AddEmployee () {
 
   return (
     <section>
-      <h1 className='text-center'>Employee list</h1>  
-      <hr />
-      <div className="border p-3">
+      <h1 className="mb-4 text-center" id="headFont">EMD Record</h1>
+      <div className=" shadow p-3" id="Borderbg">
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-4 mb-1">
             <input className='form-control' type="text" placeholder='First Name' 
               onChange={(e) => setEmployee({ //adding OnChange to show typed data in the page
                 ...employee,                //retaining the values of the employee object
@@ -59,7 +58,7 @@ function AddEmployee () {
             />
           </div>
 
-          <div className="col-md-4">
+          <div className="col-md-4 mb-1">
             <input className='form-control' type="text" placeholder='Last Name' 
                 onChange={(e) => setEmployee({ 
                   ...employee,
@@ -70,7 +69,7 @@ function AddEmployee () {
             />
           </div>
 
-          <div className="col-md-2">
+          <div className="col-md-2 mb-1">
             <input className='form-control' type="text" placeholder='Position' 
               onChange={(e) => setEmployee({ 
                 ...employee,
@@ -81,7 +80,7 @@ function AddEmployee () {
             />
           </div>
 
-          <div className="col-md-2">
+          <div className="col-md-2 mb-1">
             <input className='form-control' type="number" placeholder='Salary' 
               onChange={(e) => setEmployee({ 
                 ...employee,
@@ -93,7 +92,7 @@ function AddEmployee () {
           </div>
 
           <div className="d-grid gap-2 mt-3">
-            <button className='btn' id="addButton" onClick={AddEmployee}>Add new Employee Record</button>
+            <button className='btn' id="addButton" onClick={AddEmployee}>Create Record</button>
           </div>
 
         </div>
@@ -137,7 +136,7 @@ function AddEmployee () {
       </div>
       {employeeList.map(show => 
       <>
-      <div className="row">
+      <div className="row" id="headFont">
       <div className="col-md-8 mx-auto">
         <div className="alert alert-info mt-3 fw-light" role="alert">
           First Name: <b>{show.firstname}</b> Last Name: <b>{show.lastname}</b> Position: <b>{show.position}</b> Salary: <b>${show.salary}</b>

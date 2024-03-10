@@ -1,5 +1,7 @@
 #Edit {
     background: rgb(0, 195, 255);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
 }
 
 #Edit:hover {
@@ -11,6 +13,8 @@
 #Delete {
     background: rgb(0, 68, 177);
     color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
 }
 
 #Delete:hover {
@@ -22,4 +26,12 @@
 #Card:hover{
     scale: 1.1;
     transition: .6s;
+}
+
+#cardFont {
+        font-family: "Bebas Neue", sans-serif;
+        font-weight: 100;
+        font-style: normal;
+    
+      
 }
