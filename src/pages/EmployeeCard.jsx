@@ -153,7 +153,6 @@ function EmployeeCard () {
         </div>
         
       </div>
-      AOS.init();
 
           {
             employeeRecord.map((Employee) =>  //Pass the fetched data on the EditEmployee component.
