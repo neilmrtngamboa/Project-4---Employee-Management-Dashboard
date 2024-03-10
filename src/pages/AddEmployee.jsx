@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import EmployeeList from "./EmployeeList";
 import './Style/AddEmployee.css'
+import Swal from 'sweetalert2'
 
 
 function AddEmployee () {
@@ -25,13 +26,30 @@ function AddEmployee () {
       const db = getFirestore(firebaseInitialization);
 
       if (employee.firstname === '' || employee.lastname === '' || employee.position === '' || employee.salary === '' ){ //Condition if the form is empty
-        alert('Please fill out the empty fields!');
+        Swal.fire({
+          title: 'Error!',
+          text: 'Please fill out the empty fields!',
+          icon: 'error',
+          confirmButtonText: 'Ok',
+          confirmButtonColor: '#0662c4',
+          background: '#0b2d52',
+          color: '#fafbfc'
+        })
       }else{
         addDoc(collection(db,'employee-dashboard'),employee); //Adding a document to the firebase collection
         
         setEmployeeList(employeeList => [...employeeList, employee]) //pushing the employee value to the employeeList array
         
-        alert(`${employee.firstname} ${employee.lastname} has been successfully added!`) //Alert when the data has been successfully added
+        //Alert when the data has been successfully added
+        Swal.fire({
+          title: 'Success',
+          text: `${employee.firstname} ${employee.lastname} has been successfully added!`,
+          icon: 'success',
+          confirmButtonText: 'Ok',
+          confirmButtonColor: '#0662c4',
+          background: '#0b2d52',
+          color: '#fafbfc'
+        })
         setEmployee({             //Clearing the values of the form and the OnChange value
           firstname: '',
           lastname: '',        

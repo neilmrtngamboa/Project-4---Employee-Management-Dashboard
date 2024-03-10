@@ -66,6 +66,16 @@ function EmployeeCard () {
         salary: employeeEdit.salary,
       })
 
+      Swal.fire({
+        title: 'Update Success',
+        text: 'The record has been updated',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#0662c4',
+        background: '#0b2d52',
+        color: '#fafbfc'
+      })
+
       setEmployeeEdit({     //Clear the values after updating the chosen data.
         firstname: '',
         lastname: '',
@@ -78,12 +88,15 @@ function EmployeeCard () {
     const deleteRecord = (employeeID) => {
 
       Swal.fire({
-        title: 'Error!',
-        text: 'Do you want to continue',
-        icon: 'error',
-        confirmButtonText: 'Cool'
+        title: 'Delete Success',
+        text: 'The record has been deleted',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#0662c4',
+        background: '#0b2d52',
+        color: '#fafbfc'
       })
-      
+
       const db = getFirestore(firebaseInitialization); // Get the data from the database
       const deleteEmployee = doc(db,'employee-dashboard',employeeID)
 
@@ -126,7 +139,7 @@ function EmployeeCard () {
           <input type="number" className="form-control" name="" id=""
           onChange={(e) => setEmployeeEdit({
             ...employeeEdit,
-            position:e.target.value
+            salary:e.target.value
           })}
           value={employeeEdit.salary} disabled={FormStatus} placeholder="Salary"/>
         </div>
