@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import App from './App.jsx';
+import './pages/Style/Layout.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from "./pages/Layout";
 import NotFound from "./pages/NotFound";

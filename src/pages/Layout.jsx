@@ -1,11 +1,13 @@
 import { Outlet, Link } from "react-router-dom";
+import React from "react";
+import './Style/Layout.css'
 
 function Layout () {
     return (
          <main className="d-flex flex-column min-vh-100">
-            <nav className="navbar navbar-expand-lg bg-danger">
+            <nav className="navbar navbar-expand-lg" id="navBar">
                 <div className="container-fluid">
-                    <Link className="navbar-brand fw-bold fs-2" to='/'>Employee Management Dashboard</Link>
+                    <Link className="navbar-brand fw-bold fs-2" to='/'>EMD</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -23,7 +25,7 @@ function Layout () {
                 <Outlet />
             </div>
 
-            <footer className="bg-danger text-center text-black p-3 mt-auto">
+            <footer className="text-center text-black p-3 mt-auto" id="ftr">
                     <h5 className="fw-bold">Employee Management Dashboard</h5>
                     <small className="fw-light">A project by Neil Martin Gamboa</small>
                     <div><small className="fw-light">BASE404™</small></div>
