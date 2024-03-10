@@ -7,7 +7,7 @@ return (
         <div className="d-md-inline-flex mt-3" id='cardFont'>
             <div className="flex-md-row">
                 <div className="card mt-2 ms-4 align-items-center p-2" id='Card'>
-                    <img src="https://cdn-icons-png.flaticon.com/256/1177/1177568.png" class="card-img-top img-fluid mt-2" alt="..." style={{height:'8rem', width:'8rem'}}/>
+                    <img src="https://cdn-icons-png.flaticon.com/256/1177/1177568.png" id='img' class="card-img-top img-fluid mt-2" alt="..." style={{height:'8rem', width:'8rem'}}/>
                     <div className="card-body text-center">
                         <h5 className="card-title">{firstname}   {lastname}</h5>
                         <p className="card-text">{position}</p>

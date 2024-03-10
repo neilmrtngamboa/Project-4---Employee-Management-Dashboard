@@ -26,6 +26,12 @@
 #Card:hover{
     scale: 1.1;
     transition: .6s;
+
+    & #img {
+        scale: 1.1;
+        transition: 1s;
+    }
+    
 }
 
 #cardFont {
@@ -45,3 +51,6 @@
    background-color: rgb(0, 167, 217);
 
 }
+
+
+
