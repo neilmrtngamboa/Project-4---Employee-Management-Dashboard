@@ -125,7 +125,7 @@ function EmployeeCard () {
         </div>
         
         <div className="col-md-2">
-          <button className="btn btn-light" disabled={updatebuttonStatus} onClick={updateEmployeeRecord}>Update Record</button>
+          <button className="btn" id="updateButton" disabled={updatebuttonStatus} onClick={updateEmployeeRecord}>Update Record</button>
         </div>
         
       </div>
