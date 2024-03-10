@@ -29,6 +29,7 @@ function Layout () {
                     <h5 className="fw-bold">Employee Management Dashboard</h5>
                     <small className="fw-light">A project by Neil Martin Gamboa</small>
                     <div><small className="fw-light">BASE404™</small></div>
+                    
 
             </footer>
         </main>
