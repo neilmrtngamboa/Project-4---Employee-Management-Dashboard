@@ -9,6 +9,7 @@ import EditEmployee from "./pages/EditEmployee.jsx";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import './pages/Style/Layout.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 
