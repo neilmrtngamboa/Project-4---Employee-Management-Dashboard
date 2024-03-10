@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { getFirestore, collection, onSnapshot, updateDoc,doc,deleteDoc} from "firebase/firestore";
 import firebaseInitialization from "./FirebaseConfig";
 import EditEmployee from "./EditEmployee";
+import './Style/EditEmployee.css'
+
 
 function EmployeeCard () {
 

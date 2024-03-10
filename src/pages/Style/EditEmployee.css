@@ -1,0 +1,25 @@
+#Edit {
+    background: rgb(0, 195, 255);
+}
+
+#Edit:hover {
+    background: rgb(0, 171, 223);
+    scale: 1.2;
+    transition: .5s;
+}
+
+#Delete {
+    background: rgb(0, 68, 177);
+    color: white;
+}
+
+#Delete:hover {
+    background: rgb(0, 52, 136);
+    scale: 1.1;
+    transition: .5s;
+}
+
+#Card:hover{
+    scale: 1.1;
+    transition: .6s;
+}
