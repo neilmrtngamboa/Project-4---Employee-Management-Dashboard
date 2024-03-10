@@ -75,7 +75,6 @@ function EmployeeCard () {
     }
 
     const deleteRecord = (employeeID) => {
-      //alert('button is working!');
 
       const db = getFirestore(firebaseInitialization); // Get the data from the database
       const deleteEmployee = doc(db,'employee-dashboard',employeeID)
