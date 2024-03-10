@@ -4,6 +4,7 @@ import firebaseInitialization from "./FirebaseConfig";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import EmployeeList from "./EmployeeList";
+import './Style/AddEmployee.css'
 
 
 function AddEmployee () {
@@ -45,7 +46,7 @@ function AddEmployee () {
     <section>
       <h1 className='text-center'>Employee list</h1>  
       <hr />
-      <div className="border p-3 bg-transparent">
+      <div className="border p-3">
         <div className="row">
           <div className="col-md-4">
             <input className='form-control' type="text" placeholder='First Name' 
@@ -92,14 +93,14 @@ function AddEmployee () {
           </div>
 
           <div className="d-grid gap-2 mt-3">
-            <button className='btn btn-dark' onClick={AddEmployee}>Add new Employee Record</button>
+            <button className='btn' id="addButton" onClick={AddEmployee}>Add new Employee Record</button>
           </div>
 
         </div>
         
       </div>
 
-      <div className="card bg-dark-subtle mt-3"> 
+      <div className="card mt-3" id="addedList"> 
           <div className="card-body p-2">
             <div className="row">
               <div className="col-md-4">
