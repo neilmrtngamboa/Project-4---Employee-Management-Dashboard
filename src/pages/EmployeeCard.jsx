@@ -6,6 +6,7 @@ import './Style/EditEmployee.css'
 import Swal from 'sweetalert2'
 
 
+
 function EmployeeCard () {
 
     const [employeeRecord,setEmployeeRecord] = useState ([])
@@ -15,6 +16,7 @@ function EmployeeCard () {
     const [updatebuttonStatus, setUpdateButtonStatus] = useState(true) //state of the update button
 
     const [FormStatus,setFormStatus] = useState(true) //state of the Update Form
+
 
     useEffect(() => {
     
@@ -41,6 +43,8 @@ function EmployeeCard () {
 
 
     }, [])
+
+    
 
     const setupUpdate = (employeeID,firstname,lastname,position,salary) => { //fetch the selected data
 
@@ -149,7 +153,8 @@ function EmployeeCard () {
         </div>
         
       </div>
-      
+      AOS.init();
+
           {
             employeeRecord.map((Employee) =>  //Pass the fetched data on the EditEmployee component.
             <EditEmployee
