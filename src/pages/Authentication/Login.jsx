@@ -2,6 +2,7 @@ import { Link,useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseInitialization from '../FirebaseConfig';
+import '../Style/Login.css';
 
 function Login () {
 
@@ -38,8 +39,8 @@ function Login () {
     }
 
     return (
-        <>
-        <div className="container-fluid bg-primary p-3 my-auto">
+        <main>
+        <div className="container-fluid p-3 my-auto rounded" id="container">
             <h1 className="m-3">Login</h1>
             <input type="email" className="form-control mb-3" placeholder="Email"
             onChange={(e) => setEmail(e.target.value)} value={email}
@@ -48,11 +49,11 @@ function Login () {
             onChange={(e) => setPassword(e.target.value)} value={password}
             />
 
-            <button className="btn btn-light" onClick={() => signIn()}>Sign In</button>
+            <button className="btn btn-light fs-5" id="signin" onClick={() => signIn()}>Sign In</button>
 
-            <p className="mt-3">Don't have an account? <Link to='/register' className="text-dark">Register here</Link></p>
+            <p className="mt-3">Don't have an account? <Link to='/register' id="register">Register here</Link></p>
         </div>
-        </>
+        </main>
     )
 }
 export default Login;

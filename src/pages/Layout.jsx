@@ -64,23 +64,22 @@ function Layout () {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav ms-5">
-                            <Link className="nav-link" to='employeelist'>Employee List</Link>
-                            <Link className="nav-link" to='employeecard'>Employee Card</Link>
-                        </div>
-
-                        <div className="navbar-nav">
                             {
                                 authenticated
                                 ?
                                 <>
-                                <Link className="nav-link" to='addemployee'>Manage Records</Link>
+                                    <Link className="nav-link" to='employeelist'>Employee List</Link>
+                                    <Link className="nav-link" to='employeecard'>Employee Card</Link>
+                                    <Link className="nav-link" to='addemployee'>Manage Records</Link>
                                 </>
                                 
-                                
                                 :
-                                <></>
+                                <>
+                                </>
                             }
+                            
                         </div>
+
 
                         <div className="navbar-nav ms-auto">
                         {

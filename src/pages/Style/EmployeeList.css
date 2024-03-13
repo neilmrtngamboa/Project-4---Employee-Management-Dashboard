@@ -3,3 +3,25 @@
     font-weight: 500;
     font-style: normal;
 }
+
+#guest {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+#Login {
+    color: rgb(0, 204, 255);
+}
+
+#Register {
+    color: rgb(0, 204, 255);
+}
+
+#Login:hover {
+    color: rgb(0, 126, 204);
+}
+
+#Register:hover {
+    color: rgb(0, 126, 204);
+}

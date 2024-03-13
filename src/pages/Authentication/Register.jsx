@@ -2,6 +2,7 @@ import { Link,useNavigate } from "react-router-dom";
 import { useState } from "react";
 import FirebaseInitialization from '../FirebaseConfig';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import '../Style/Register.css';
 
 function Register () {
 
@@ -48,42 +49,43 @@ function Register () {
 
     
     return (
-        <section>
-        <div className="container-fluid bg-light p-5">
+        <section className="main">
+        <div className="container-fluid rounded p-5" id="container">
+        <h1> Register an Account</h1>
             <div className="row">
                 <div className="col-md-6">
-                    <label htmlFor="registerFirstName" className="text-dark mb-2">First Name:</label>
-                    <input type="text" placeholder="First Name" id="registerFirstName" className="form-control mb-2"
+                    <label htmlFor="registerFirstName" className="mb-2">First Name:</label>
+                    <input type="text" placeholder="Juan" id="registerFirstName" className="form-control mb-2"
                     onChange={(e) => setUserFirstName(e.target.value)} value={userFirstName}
                     />
                 </div>
 
                 <div className="col-md-6">
-                    <label htmlFor="registerLastName" className="text-dark mb-2">Last Name:</label>
-                    <input type="text" placeholder="Last Name" id="registerLastName" className="form-control"
+                    <label htmlFor="registerLastName" className="mb-2">Last Name:</label>
+                    <input type="text" placeholder="Dela Cruz" id="registerLastName" className="form-control"
                     onChange={(e) => setUserLastName(e.target.value)} value={userLastName}
                     />
                 </div>
             </div>
 
-            <label htmlFor="registerEmail" className="text-dark mb-2">Email:</label>
+            <label htmlFor="registerEmail" className="mb-2">Email:</label>
             <input type="email" placeholder="yourname@sample.com" id="registerEmail" className="form-control"
             onChange={(e) => setEmail(e.target.value)} value={email}
             />
 
-            <label htmlFor="registerPassword" className="text-dark mt-2">Password:</label>
+            <label htmlFor="registerPassword" className="mt-2">Password:</label>
             <input type="Password" id="registerPassword" className="form-control mb-3"
             onChange={(e) => setPassword(e.target.value)} value={password}
             />
 
-            <label htmlFor="confirmPassword" className="text-dark mt-2">Confirm Password:</label>
+            <label htmlFor="confirmPassword" className="mt-2">Confirm Password:</label>
             <input type="Password" id="confirmPassword" className="form-control mb-3"
             onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword}
             />
 
-            <button className="btn btn-primary mb-4" onClick={() => RegisterAccount()}>Create an Account</button>
+            <button className="btn btn-light mb-4" id="create" onClick={() => RegisterAccount()}>Create an Account</button>
 
-            <p className="text-dark">Already have an account? <Link to='/login'>Login here</Link></p>
+            <p className="">Already have an account? <Link to='/login' id="login">Login here</Link></p>
 
         </div>
         </section>

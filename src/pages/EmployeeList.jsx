@@ -3,6 +3,7 @@ import { getFirestore, collection, onSnapshot} from "firebase/firestore";
 import firebaseInitialization from "./FirebaseConfig";
 import './Style/EmployeeList.css'
 import { onAuthStateChanged,getAuth } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 
 
 function EmployeeList({firstname,lastname,salary,position}) {
@@ -78,23 +79,6 @@ function EmployeeList({firstname,lastname,salary,position}) {
   } else {
     return (
       <>
-        
-        <h1 className='text-center' id='headfont'>Employee List</h1>
-        {
-          employeeRecord.map(showData => 
-          <>
-          <div className="row">
-          <div className="col-md-8 mx-auto">
-            <div className="alert alert-info mt-1 fw-light" role="alert">
-            Last Name: <b>{showData.lastname}</b>
-            </div>
-          </div>
-        </div>
-          </>
-          
-          )
-  
-        }
       </>
     )
    

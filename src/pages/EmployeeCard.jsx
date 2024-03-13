@@ -191,7 +191,8 @@ function EmployeeCard () {
       )
     } else{
       return(
-        <h1>Welcome Guest!</h1>
+        <>
+        </>
       )
     } 
 
