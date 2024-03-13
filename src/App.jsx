@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import './pages/Style/Layout.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Login from "./pages/Authentication/Login.jsx";
 
 
 
@@ -24,6 +25,8 @@ function App () {
                     <Route path="employeecard" element={<EmployeeCard/>}/>
                     <Route path="addemployee" element={<AddEmployee/>}/>
                     <Route path="editemployee" element={<EditEmployee/>}/>
+                    <Route path="login" element={<Login/>}/>
+                    <Route path="register" element={<Register/>}/>
                     <Route path="*" element={<NotFound/>}/>
 
                 </Route>
