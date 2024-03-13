@@ -2,7 +2,7 @@ import { Outlet, Link } from "react-router-dom";
 import React from "react";
 import './Style/Layout.css'
 import FirebaseInitialization from './FirebaseConfig'
-import {getAuth, onAuthStateChanged} from "firebase/auth";
+import {getAuth, onAuthStateChanged, signOut} from "firebase/auth";
 import { useState,useEffect } from "react";
 
 
@@ -28,6 +28,18 @@ function Layout () {
 
     }, [])
 
+    const logOut = () => {
+
+        const auth = getAuth(FirebaseInitialization);
+        signOut(auth).then(() => {
+            alert('Signed out successfully!')
+            setAuthenticated(false)
+
+        }).catch((error) => {
+            alert('Error! failed log out attempt!');
+        })
+    }
+
     return (
          <main className="d-flex flex-column min-vh-100">
             <nav className="navbar navbar-expand-lg" id="navBar">
@@ -49,7 +61,7 @@ function Layout () {
                                 authenticated
                                 ?
                                 <li className="nav-item">
-                                <Link className="nav-link text-white">Logout</Link>
+                                <Link className="nav-link text-white" onClick={() => logOut()}>Logout</Link>
                                 </li>
                                 
                                 :
