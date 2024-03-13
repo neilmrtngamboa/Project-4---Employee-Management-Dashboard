@@ -18,7 +18,9 @@ function Register () {
             <div className="row">
                 <div className="col-md-6">
                     <label htmlFor="registerFirstName" className="text-dark mb-2">First Name:</label>
-                    <input type="text" placeholder="First Name" id="registerFirstName" className="form-control mb-2" />
+                    <input type="text" placeholder="First Name" id="registerFirstName" className="form-control mb-2"
+                    onChange={(e) => setUserFirstName(e.target.value)} value={userFirstName}
+                    />
                 </div>
 
                 <div className="col-md-6">
@@ -37,7 +39,7 @@ function Register () {
 
             <p className="text-dark">Already have an account? <Link to='login'>Login here</Link></p>
 
-
+            <p className="text-dark">{userFirstName}</p>
         </div>
         </section>
     )
