@@ -4,6 +4,7 @@ import './Style/Layout.css'
 import firebaseInitialization from './Firebase Configuration/FirebaseConfig'
 import {getAuth, onAuthStateChanged, signOut} from "firebase/auth";
 import { useState,useEffect } from "react";
+import Swal from "sweetalert2";
 
 
 function Layout () {
@@ -34,10 +35,18 @@ function Layout () {
 
     const logOut = () => {
 
-        const auth = getAuth(FirebaseInitialization);
+        const auth = getAuth(firebaseInitialization);
         signOut(auth).then(() => {
             setAuthenticated(false)
-            alert('Signed out successfully!')
+            Swal.fire({
+                title: 'Logout successful!',
+                text: 'You are now logged out' ,
+                icon: 'success',
+                background: '#0582f7' ,
+                confirmButtonText: 'Ok',
+                color: 'white',
+                confirmButtonColor: '#82baed'
+              })
             
             GoTo('/')
 

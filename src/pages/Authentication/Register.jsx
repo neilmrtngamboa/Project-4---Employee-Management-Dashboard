@@ -3,6 +3,7 @@ import { useState } from "react";
 import FirebaseInitialization from '../Firebase Configuration/FirebaseConfig';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import '../Style/Register.css';
+import Swal from "sweetalert2";
 
 function Register () {
 
@@ -27,7 +28,14 @@ function Register () {
                 updateProfile(auth.currentUser, {
                     displayName: userFirstName + ' ' + userLastName
                   });
-                alert('Account creation successful!')
+                  Swal.fire({
+                    title: 'Registration Successful!',
+                    icon: 'success',
+                    background: '#0582f7' ,
+                    confirmButtonText: 'Ok',
+                    color: 'white',
+                    confirmButtonColor: '#82baed'
+                  })
 
                 GoTo('/');
                 

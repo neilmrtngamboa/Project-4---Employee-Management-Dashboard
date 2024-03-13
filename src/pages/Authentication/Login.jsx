@@ -3,6 +3,7 @@ import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseInitialization from '../Firebase Configuration/FirebaseConfig';
 import '../Style/Login.css';
+import Swal from "sweetalert2";
 
 function Login () {
 
@@ -22,7 +23,15 @@ function Login () {
                 // Signed up 
                 const user = userCredential.user;
                 // ...
-                alert('signed in!')
+                Swal.fire({
+                    title: 'Login successful!',
+                    text: 'You are now logged in!' ,
+                    icon: 'success',
+                    background: '#0582f7' ,
+                    confirmButtonText: 'Ok',
+                    color: 'white',
+                    confirmButtonColor: '#82baed'
+                  })
                 GoTo('/employeelist')
             })
             .catch((error) => {
