@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseInitialization from '../FirebaseConfig';
@@ -7,6 +7,8 @@ function Login () {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    let GoTo = useNavigate();
 
     const signIn = () => {
 
@@ -20,6 +22,7 @@ function Login () {
                 const user = userCredential.user;
                 // ...
                 alert('signed in!')
+                GoTo('/employeelist')
             })
             .catch((error) => {
                 alert('error!')
@@ -47,7 +50,7 @@ function Login () {
 
             <button className="btn btn-light" onClick={() => signIn()}>Sign In</button>
 
-            <p className="mt-3">Don't have an account? <Link to='/regiter' className="text-dark">Register here</Link></p>
+            <p className="mt-3">Don't have an account? <Link to='/register' className="text-dark">Register here</Link></p>
         </div>
         </>
     )

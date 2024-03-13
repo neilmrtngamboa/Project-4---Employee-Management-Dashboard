@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useState } from "react";
 import FirebaseInitialization from '../FirebaseConfig';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -10,6 +10,8 @@ function Register () {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+
+    let GoTo = useNavigate();
 
     const RegisterAccount = () => {
 
@@ -25,6 +27,9 @@ function Register () {
                     displayName: userFirstName + ' ' + userLastName
                   });
                 alert('Account creation successful!')
+
+                GoTo('/');
+                
             })
             .catch((error) => {
                 alert('registration failed!');
@@ -78,7 +83,7 @@ function Register () {
 
             <button className="btn btn-primary mb-4" onClick={() => RegisterAccount()}>Create an Account</button>
 
-            <p className="text-dark">Already have an account? <Link to='login'>Login here</Link></p>
+            <p className="text-dark">Already have an account? <Link to='/login'>Login here</Link></p>
 
         </div>
         </section>

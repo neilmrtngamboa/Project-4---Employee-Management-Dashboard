@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import React from "react";
 import './Style/Layout.css'
 import FirebaseInitialization from './FirebaseConfig'
@@ -10,6 +10,8 @@ function Layout () {
 
     const [authenticated,setAuthenticated] = useState(false)
     const [userProfile, setUserProfile] = useState({})
+
+    let GoTo = useNavigate();
 
     useEffect( () => {
 
@@ -34,8 +36,10 @@ function Layout () {
 
         const auth = getAuth(FirebaseInitialization);
         signOut(auth).then(() => {
-            alert('Signed out successfully!')
             setAuthenticated(false)
+            alert('Signed out successfully!')
+            
+            GoTo('/')
 
         }).catch((error) => {
             alert('Error! failed log out attempt!');
