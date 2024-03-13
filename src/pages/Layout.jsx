@@ -47,11 +47,19 @@ function Layout () {
             <nav className="navbar navbar-expand-lg" id="navBar">
                 <div className="container-fluid">
                     <Link className="navbar-brand fw-bold fs-2" to='/'>EMD</Link>
+                    {
+                        authenticated
+                        ?
+                        <p className="ms-2" id="displayName">Hello, {userProfile.displayName}!</p>
+                        :
+                        <></>
+
+                    }
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div className="navbar-nav">
+                        <div className="navbar-nav ms-5">
                             <Link className="nav-link" to='employeelist'>Employee List</Link>
                             <Link className="nav-link" to='employeecard'>Employee Card</Link>
                         </div>
@@ -60,12 +68,16 @@ function Layout () {
                             {
                                 authenticated
                                 ?
+                                <>
                                 <Link className="nav-link" to='addemployee'>Manage Records</Link>
+                                </>
+                                
+                                
                                 :
                                 <></>
                             }
                         </div>
-                        <p className="my-auto mx-auto"> Hi, {userProfile.displayName}</p>
+
                         <div className="navbar-nav ms-auto">
                         {
                                 authenticated
