@@ -1,10 +1,14 @@
 import { Outlet, Link } from "react-router-dom";
 import React from "react";
 import './Style/Layout.css'
+import FirebaseInitialization from './FirebaseConfig'
+import {getAuth, onAuthStateChanged} from "firebase/auth";
 
 
 
 function Layout () {
+
+
     return (
          <main className="d-flex flex-column min-vh-100">
             <nav className="navbar navbar-expand-lg" id="navBar">
