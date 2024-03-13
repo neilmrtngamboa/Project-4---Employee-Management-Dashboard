@@ -41,6 +41,11 @@ function Register () {
             onChange={(e) => setPassword(e.target.value)} value={password}
             />
 
+            <label htmlFor="confirmPassword" className="text-dark mt-2">Confirm Password:</label>
+            <input type="Password" id="confirmPassword" className="form-control mb-3"
+            onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword}
+            />
+
             <button className="btn btn-primary mb-4">Create an Account</button>
 
             <p className="text-dark">Already have an account? <Link to='login'>Login here</Link></p>
