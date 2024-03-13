@@ -54,7 +54,7 @@ function Layout () {
                             <Link className="nav-link" to='employeecard'>Employee Card</Link>
                         </div>
 
-                        <div className="navbar-nav ms-auto">
+                        <div className="navbar-nav">
                             {
                                 authenticated
                                 ?
