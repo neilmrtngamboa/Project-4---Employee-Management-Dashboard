@@ -4,6 +4,7 @@ import firebaseInitialization from "./FirebaseConfig";
 import EditEmployee from "./EditEmployee";
 import './Style/EditEmployee.css'
 import Swal from 'sweetalert2'
+import {getAuth, onAuthStateChanged} from "firebase/auth";
 
 
 
@@ -17,12 +18,27 @@ function EmployeeCard () {
 
     const [FormStatus,setFormStatus] = useState(true) //state of the Update Form
 
+    const [authenticated,setAuthenticated] = useState (false);
 
     useEffect(() => {
     
       // Initialize Cloud Firestore and get a reference to the service
       const db = getFirestore(firebaseInitialization);
       const dbReference = collection(db,'employee-dashboard');
+
+      const auth = getAuth(firebaseInitialization);
+      onAuthStateChanged(auth, (user) => {
+      if (user) {
+          setAuthenticated(true);
+          const uid = user.uid;
+          
+          // ...
+      } else {
+          // User is signed out
+          // ...
+          
+      }
+      });
 
 
       try {
@@ -40,6 +56,7 @@ function EmployeeCard () {
       } catch (error) {
         alert('cant fetch data');
       }
+      
 
 
     }, [])
@@ -108,69 +125,77 @@ function EmployeeCard () {
 
     }
 
-    return (
-      <>
-      <div className="row ms-3">
-
-        <div className="col-md-3 mb-1">
-          <input type="text" className="form-control" name="" id=""
-          onChange={(e) => setEmployeeEdit({  //To make changes to the data
-            ...employeeEdit,                 //To retain each values of the Object (employeeEdit)
-            firstname:e.target.value         //set the state of the firstname based on the event that happened.
-          })}
-          value={employeeEdit.firstname} disabled={FormStatus} placeholder="First Name"/> 
+    if(authenticated) {
+      return (
+        <>
+        <div className="row ms-3">
+  
+          <div className="col-md-3 mb-1">
+            <input type="text" className="form-control" name="" id=""
+            onChange={(e) => setEmployeeEdit({  //To make changes to the data
+              ...employeeEdit,                 //To retain each values of the Object (employeeEdit)
+              firstname:e.target.value         //set the state of the firstname based on the event that happened.
+            })}
+            value={employeeEdit.firstname} disabled={FormStatus} placeholder="First Name"/> 
+          </div>
+  
+          <div className="col-md-3 mb-1">
+            <input type="text" className="form-control" name="" id=""
+            onChange={(e) => setEmployeeEdit({
+              ...employeeEdit,
+              lastname:e.target.value
+            })}
+            value={employeeEdit.lastname} disabled={FormStatus} placeholder="Last Name"/>
+          </div>
+  
+          <div className="col-md-2 mb-1">
+            <input type="text" className="form-control" name="" id=""
+            onChange={(e) => setEmployeeEdit({
+              ...employeeEdit,
+              position:e.target.value
+            })}
+            value={employeeEdit.position} disabled={FormStatus} placeholder="Position" />
+          </div>
+  
+          <div className="col-md-2 mb-1">
+            <input type="number" className="form-control" name="" id=""
+            onChange={(e) => setEmployeeEdit({
+              ...employeeEdit,
+              salary:e.target.value
+            })}
+            value={employeeEdit.salary} disabled={FormStatus} placeholder="Salary"/>
+          </div>
+          
+          <div className="col-md-2">
+            <button className="btn" id="updateButton" disabled={updatebuttonStatus} onClick={updateEmployeeRecord}>Update Record</button>
+          </div>
+          
         </div>
+  
+            {
+              employeeRecord.map((Employee) =>  //Pass the fetched data on the EditEmployee component.
+              <EditEmployee
+                key={Employee.id}
+                firstname={Employee.firstname} 
+                lastname={Employee.lastname}
+                position={Employee.position}
+                salary={Employee.salary}
+                setupUpdate={setupUpdate}
+                employeeID={Employee.employeeID}
+                deleteRecord={deleteRecord}
+              />
+              )
+            }
+        </>
+       
+      )
+    } else{
+      return(
+        <h1>Welcome Guest!</h1>
+      )
+    } 
 
-        <div className="col-md-3 mb-1">
-          <input type="text" className="form-control" name="" id=""
-          onChange={(e) => setEmployeeEdit({
-            ...employeeEdit,
-            lastname:e.target.value
-          })}
-          value={employeeEdit.lastname} disabled={FormStatus} placeholder="Last Name"/>
-        </div>
-
-        <div className="col-md-2 mb-1">
-          <input type="text" className="form-control" name="" id=""
-          onChange={(e) => setEmployeeEdit({
-            ...employeeEdit,
-            position:e.target.value
-          })}
-          value={employeeEdit.position} disabled={FormStatus} placeholder="Position" />
-        </div>
-
-        <div className="col-md-2 mb-1">
-          <input type="number" className="form-control" name="" id=""
-          onChange={(e) => setEmployeeEdit({
-            ...employeeEdit,
-            salary:e.target.value
-          })}
-          value={employeeEdit.salary} disabled={FormStatus} placeholder="Salary"/>
-        </div>
-        
-        <div className="col-md-2">
-          <button className="btn" id="updateButton" disabled={updatebuttonStatus} onClick={updateEmployeeRecord}>Update Record</button>
-        </div>
-        
-      </div>
-
-          {
-            employeeRecord.map((Employee) =>  //Pass the fetched data on the EditEmployee component.
-            <EditEmployee
-              key={Employee.id}
-              firstname={Employee.firstname} 
-              lastname={Employee.lastname}
-              position={Employee.position}
-              salary={Employee.salary}
-              setupUpdate={setupUpdate}
-              employeeID={Employee.employeeID}
-              deleteRecord={deleteRecord}
-            />
-            )
-          }
-      </>
-     
-    )
+    
 }
 
 export default EmployeeCard;
