@@ -11,6 +11,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 import './pages/Style/Layout.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Login from "./pages/Authentication/Login.jsx";
+import Register from "./pages/Authentication/Register.jsx";
 
 
 
