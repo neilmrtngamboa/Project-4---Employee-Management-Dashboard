@@ -4,6 +4,13 @@ import FirebaseInitialization from '../FirebaseConfig';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 function Register () {
+
+    const [userFirstName, setUserFirstName] = useState('');
+    const [userLastName, setUserLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
     
     return (
         <section>
