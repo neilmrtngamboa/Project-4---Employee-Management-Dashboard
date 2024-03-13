@@ -14,12 +14,13 @@ function Login () {
             <input type="email" className="form-control mb-3" placeholder="Email"
             onChange={(e) => setEmail(e.target.value)} value={email}
             />
-            <input type="password" className="form-control mb-3" placeholder="Password" />
+            <input type="password" className="form-control mb-3" placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)} value={password}
+            />
 
             <button className="btn btn-light">Sign In</button>
 
             <p className="mt-3">Don't have an account? <Link to='/regiter' className="text-dark">Register here</Link></p>
-            <p className="text-white">{email}</p>
         </div>
         </>
     )
