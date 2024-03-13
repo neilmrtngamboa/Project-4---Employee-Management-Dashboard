@@ -1,11 +1,38 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import firebaseInitialization from '../FirebaseConfig';
 
 function Login () {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const signIn = () => {
+
+        if (email !== '' && password !== '' ){
+
+            const auth = getAuth(firebaseInitialization);
+            signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                
+                // Signed up 
+                const user = userCredential.user;
+                // ...
+                alert('signed in!')
+            })
+            .catch((error) => {
+                alert('error!')
+                const errorCode = error.code;
+                const errorMessage = error.message; 
+                // ..
+            });
+
+        }else {
+            
+            alert('Please fill out the empty fields!');
+        }
+    }
 
     return (
         <>
@@ -18,7 +45,7 @@ function Login () {
             onChange={(e) => setPassword(e.target.value)} value={password}
             />
 
-            <button className="btn btn-light">Sign In</button>
+            <button className="btn btn-light" onClick={() => signIn()}>Sign In</button>
 
             <p className="mt-3">Don't have an account? <Link to='/regiter' className="text-dark">Register here</Link></p>
         </div>
