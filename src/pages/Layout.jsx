@@ -1,7 +1,7 @@
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import React from "react";
 import './Style/Layout.css'
-import FirebaseInitialization from './FirebaseConfig'
+import firebaseInitialization from './Firebase Configuration/FirebaseConfig'
 import {getAuth, onAuthStateChanged, signOut} from "firebase/auth";
 import { useState,useEffect } from "react";
 
@@ -15,7 +15,7 @@ function Layout () {
 
     useEffect( () => {
 
-        const auth = getAuth(FirebaseInitialization);
+        const auth = getAuth(firebaseInitialization);
         onAuthStateChanged(auth, (user) => {
         if (user) {
             setAuthenticated(true);

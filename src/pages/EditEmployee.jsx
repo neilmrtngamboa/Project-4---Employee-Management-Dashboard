@@ -1,6 +1,6 @@
 import './Style/EditEmployee.css'
 import { useEffect,useState } from 'react';
-import firebaseInitialization from '../pages/FirebaseConfig';
+import firebaseInitialization from './Firebase Configuration/FirebaseConfig'
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 
 

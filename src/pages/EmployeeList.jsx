@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getFirestore, collection, onSnapshot} from "firebase/firestore";
-import firebaseInitialization from "./FirebaseConfig";
+import firebaseInitialization from './Firebase Configuration/FirebaseConfig'
 import './Style/EmployeeList.css'
 import { onAuthStateChanged,getAuth } from 'firebase/auth';
 import { Link } from 'react-router-dom';

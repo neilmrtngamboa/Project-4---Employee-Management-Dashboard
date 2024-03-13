@@ -1,6 +1,6 @@
 import { Link,useNavigate } from "react-router-dom";
 import { useState } from "react";
-import FirebaseInitialization from '../FirebaseConfig';
+import FirebaseInitialization from '../Firebase Configuration/FirebaseConfig';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import '../Style/Register.css';
 

@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 import { getFirestore, collection, addDoc} from "firebase/firestore";
-import firebaseInitialization from "./FirebaseConfig";
+import firebaseInitialization from './Firebase Configuration/FirebaseConfig'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import EmployeeList from "./EmployeeList";
