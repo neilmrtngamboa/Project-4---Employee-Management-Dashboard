@@ -11,6 +11,36 @@ function Register () {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    const RegisterAccount = () => {
+
+        if (userFirstName !== '' && userLastName !== '' && password !== '' && confirmPassword !== '' 
+        && password === confirmPassword ){
+
+            const auth = getAuth(FirebaseInitialization);
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => { 
+                const user = userCredential.user;
+
+                updateProfile(auth.currentUser, {
+                    displayName: userFirstName + ' ' + userLastName
+                  });
+                alert('Account creation successful!')
+            })
+            .catch((error) => {
+                alert('registration failed!');
+                
+            });
+
+            
+
+        }else {
+            
+            alert('Please fill out the empty fields or your password does not match!');
+        }
+
+       
+    }
+
     
     return (
         <section>
@@ -46,7 +76,7 @@ function Register () {
             onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword}
             />
 
-            <button className="btn btn-primary mb-4">Create an Account</button>
+            <button className="btn btn-primary mb-4" onClick={() => RegisterAccount()}>Create an Account</button>
 
             <p className="text-dark">Already have an account? <Link to='login'>Login here</Link></p>
 
