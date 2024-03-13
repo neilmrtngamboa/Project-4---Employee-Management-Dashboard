@@ -3,11 +3,30 @@ import React from "react";
 import './Style/Layout.css'
 import FirebaseInitialization from './FirebaseConfig'
 import {getAuth, onAuthStateChanged} from "firebase/auth";
-
+import { useState,useEffect } from "react";
 
 
 function Layout () {
 
+    const [authenticated,setAuthenticated] = useState(false)
+
+    useEffect( () => {
+
+        const auth = getAuth(FirebaseInitialization);
+        onAuthStateChanged(auth, (user) => {
+        if (user) {
+            setAuthenticated(true);
+            const uid = user.uid;
+            
+            // ...
+        } else {
+            // User is signed out
+            // ...
+            
+        }
+        });
+
+    }, [])
 
     return (
          <main className="d-flex flex-column min-vh-100">
@@ -30,7 +49,7 @@ function Layout () {
             </nav>
 
             <div className="container-fluid p-4">
-                <Outlet />
+                <Outlet auth={authenticated} />
             </div>
 
             <footer className="text-center text-black p-3 mt-auto" id="ftr">
