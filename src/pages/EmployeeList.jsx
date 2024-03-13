@@ -11,8 +11,6 @@ function EmployeeList({firstname,lastname,salary,position}) {
   const [employeeRecord,setEmployeeRecord] = useState ([])
   const [authenticated,setAuthenticated] = useState (false);
 
-  const [userProfile, setUserProfile] = useState({});
-
   useEffect(() => {
     
       // Initialize Cloud Firestore and get a reference to the service
@@ -23,7 +21,6 @@ function EmployeeList({firstname,lastname,salary,position}) {
       onAuthStateChanged(auth, (user) => {
       if (user) {
           setAuthenticated(true);
-          setUserProfile(user);
           const uid = user.uid;
           
           // ...
@@ -58,8 +55,6 @@ function EmployeeList({firstname,lastname,salary,position}) {
   if (authenticated) {
     return (
       <>
-
-        <h1>Hi {userProfile.displayName}</h1>
         
         <h1 className='text-center' id='headfont'>Employee List</h1>
         {

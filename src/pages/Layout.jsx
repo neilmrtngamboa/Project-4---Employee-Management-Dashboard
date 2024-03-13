@@ -9,6 +9,7 @@ import { useState,useEffect } from "react";
 function Layout () {
 
     const [authenticated,setAuthenticated] = useState(false)
+    const [userProfile, setUserProfile] = useState({})
 
     useEffect( () => {
 
@@ -16,6 +17,7 @@ function Layout () {
         onAuthStateChanged(auth, (user) => {
         if (user) {
             setAuthenticated(true);
+            setUserProfile(user)
             const uid = user.uid;
             
             // ...
@@ -63,6 +65,7 @@ function Layout () {
                                 <></>
                             }
                         </div>
+                        <p className="my-auto mx-auto"> Hi, {userProfile.displayName}</p>
                         <div className="navbar-nav ms-auto">
                         {
                                 authenticated
@@ -81,7 +84,6 @@ function Layout () {
                                 </li>
                                 </>
                             }
-
                         </div>
 
                     </div>
